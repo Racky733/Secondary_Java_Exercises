@@ -1,0 +1,21 @@
+import java.util.Objects; 
+ 
+public class ComparaisonChaines { 
+    public static void main(String[] args) { 
+        String a = "Wave"; 
+        String b = "Wave";                   // même littéral : Java réutilise l'objet (pool) 
+        String c = new String("Wave");       // nouvel objet 
+        String d = "Wa" + "ve".toLowerCase(); // calculée à l'exécution : nouvel objet 
+ 
+        System.out.println("a == b      : " + (a == b)); 
+        System.out.println("a == c      : " + (a == c)); 
+        System.out.println("a == d      : " + (a == d)); 
+        System.out.println("a.equals(c) : " + a.equals(c)); 
+        System.out.println("a.equals(d) : " + a.equals(d)); 
+ 
+        String modePaiement = null;          // valeur absente (ex. champ non rempli) 
+        System.out.println("Wave".equals(modePaiement));       // false, sans erreur 
+        System.out.println(Objects.equals(modePaiement, null)); // true 
+        // modePaiement.equals("Wave") provoquerait une NullPointerException 
+    } 
+} 
